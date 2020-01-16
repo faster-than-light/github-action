@@ -1,0 +1,27 @@
+{
+  "name": "bugcatcher-github-action",
+  "version": "0.1.0",
+  "description": "Faster Than Light Static Analysis and GitHub Continuous Integration",
+  "author": "Faster Than Light <devops@fasterthanlight.dev>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faster-than-light/github-action.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faster-than-light/github-action/issues"
+  },
+  "homepage": "https://github.com/faster-than-light/github-action#readme",
+  "dependencies": {
+    "@actions/core": "1.1.0",
+    "@actions/github": "1.1.0",
+    "atob": "2.1.2",
+    "js-sha256": "0.9.0",
+    "node-bugcatcher": "1.0.27"
+  }
+}

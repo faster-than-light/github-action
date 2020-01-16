@@ -1,0 +1,17 @@
+name: 'FTL BugCatcher'
+description: 'Faster Than Light Static Analysis and GitHub Continuous Integration'
+inputs:
+  ftl-sid:
+    description: 'Encrypted BugCatcher SID token'
+    required: true
+  severity-threshold:
+    description: '"high", "low", "medium" threshold for triggering failure'
+outputs:
+  results:
+    description: 'BugCatcher test results'
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  icon: 'code'  
+  color: 'blue'
