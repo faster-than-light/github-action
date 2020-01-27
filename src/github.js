@@ -55,8 +55,8 @@ module.exports = {
       throw new Error('Failed to initialize tests.')
     }
     context.testId = testId
-    const test = await bugcatcher.initCheckTestStatus(context)
-    if (!test) {
+    context.test = await bugcatcher.initCheckTestStatus(context)
+    if (!context.test) {
       statusTestingFailure(context)
       throw new Error('Failed to complete tests.')
     }
@@ -80,6 +80,13 @@ module.exports = {
         if (!passesSeverity(ftl_severity, context.severityThreshold))
           failed = true
       })
+
+      if (context.test && context.test.start && context.test.end) {
+        const start = new Date(context.test.start)
+        const end = new Date(context.test.end)
+        const delta = (end - start) / 1000
+        console.log(`Test duration: ${delta} seconds\n`)
+      }
       
       if (failed) {
         console.log(`Test Results : FAILED \"${context.severityThreshold}\" severity threshold`)
@@ -91,6 +98,8 @@ module.exports = {
       }
 
       console.log(`Test Results : PASSED \"${context.severityThreshold}\" severity threshold`)
+      console.log(`${resultsMatrix.high} high, ${resultsMatrix.medium} medium, ${resultsMatrix.low} low severity`)
+      console.log(`see: ${resultsUri.replace(':stlid', context.testId)}`)
       statusResultsSuccess(context)
     }
     else {
